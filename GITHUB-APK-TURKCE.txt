@@ -1,0 +1,20 @@
+SM AI - GitHub üzerinden APK oluşturma
+
+1. Bu ZIP'i aç ve içindeki dosyaları GitHub'da yeni bir repository'ye yükle.
+2. Repository ana sayfasında Actions sekmesine gir.
+3. "Build SM AI Android APK" iş akışını seç.
+4. "Run workflow" düğmesine bas (main branch).
+5. İşlem tamamlanınca Actions > ilgili çalıştırma > Artifacts bölümünden
+   "SM-AI-debug-APK" dosyasını indir.
+6. ZIP içindeki app-debug.apk dosyasını Android telefonuna kur.
+
+ÖNEMLİ - AI API:
+Bu proje bir Express sunucusuna (/api/chat) ihtiyaç duyuyor. APK tek başına
+bu sunucuyu çalıştırmaz. Canlı AI sohbetinin çalışması için server.ts dosyasını
+GEMINI_API_KEY ortam değişkeni tanımlı güvenli bir sunucuda (ör. Render veya
+başka bir Node.js host) yayınla. Sonra GitHub Actions workflow'una
+VITE_API_BASE_URL değişkenini o sunucunun HTTPS adresi olarak ekleyip build
+komutuna aktar. Gemini API anahtarını APK içine veya GitHub'a yazma.
+
+Şu anki workflow APK paketini oluşturur; API sunucusu yayınlanmış değilse
+uygulamanın AI sohbet bölümü çalışmayabilir.
